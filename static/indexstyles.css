@@ -1,0 +1,230 @@
+/* Root Variables for Theming */
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --secondary: #4f46e5;
+    --accent: #06b6d4;
+    --background: linear-gradient(135deg, cyan, blue,navy);
+    --glass-bg: rgba(255, 255, 255, 0.15);
+    --glass-border: rgba(255, 255, 255, 0.3);
+    --text: #ffffff;
+    --text-light: rgba(255, 255, 255, 0.7);
+    --glass-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* General Styling */
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--background);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Navbar Styling */
+.navbar {
+    width: 100%;
+    padding: 15px 0;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.nav-content {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo h2 {
+    color: var(--text);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+/* Navigation Buttons */
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-button {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    padding: 10px 18px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-button:hover {
+    background: var(--primary);
+    color: white;
+    transform: scale(1.05);
+}
+
+.primary {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    border: none;
+}
+
+.primary:hover {
+    background: linear-gradient(135deg, var(--primary-dark), var(--secondary));
+}
+
+/* Main Content Section */
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    text-align: center;
+    margin-top: 80px;
+}
+
+/* Glassmorphism Container */
+.glass-container {
+    background: var(--glass-bg);
+    padding: 2.5rem;
+    box-shadow: var(--glass-shadow);
+    border-radius: 1.2rem;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 2px solid var(--glass-border);
+    max-width: 500px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.glass-container:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Headings */
+h1 {
+    color: var(--text);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.tagline {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Accuracy Section */
+.accuracy {
+    color: var(--success);
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 17px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 4px 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+/* Login Button */
+.login-button {
+    background: var(--accent);
+    color: white;
+    border: none;
+}
+
+.login-button:hover {
+    background: #0284c7;
+    transform: scale(1.08);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Footer */
+.footer {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.footer-content {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Apply Animation */
+.glass-container, h1, .tagline {
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-button, .btn {
+        width: 100%;
+        display: block;
+    }
+
+    .glass-container {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .glass-container {
+        max-width: 90%;
+        padding: 1.5rem;
+    }
+
+    h1 {
+        font-size: 1.7rem;
+    }
+
+    .nav-button, .btn {
+        font-size: 16px;
+    }
+}

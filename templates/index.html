@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liver Seg AI - Advanced Medical Imaging Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='indexstyles.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="page-wrapper">
+        <nav class="navbar">
+            <div class="nav-content">
+                <div class="logo">
+                    <h2>LiverSeg AI</h2>
+                </div>
+                <div class="nav-links">
+                    <a href="/signup" class="nav-button">Sign Up</a>
+                    <a href="/login" class="nav-button login-button">Login</a>
+                    <a href="/upload" class="nav-button primary">Upload CT Scan</a>
+                </div>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <div class="container">
+                <h1>Welcome to LiverSeg AI</h1>
+                <p class="tagline">Harnessing the power of AI for precise liver tumor segmentation.</p>
+
+                <div class="info-section">
+                    <p class="accuracy">📊 Accuracy: <strong>99.7%</strong></p>
+                </div>
+
+                <div class="upload-section">
+                    <a href="/login" class="btn login-button">Login</a>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2025 Liver Seg AI. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const uploadLink = document.getElementById("uploadLink");
+
+            if (uploadLink) {
+                uploadLink.addEventListener("click", function (event) {
+                    if (!sessionStorage.getItem("logged_in")) {
+                        event.preventDefault();
+                        alert("Please log in to access the upload page.");
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

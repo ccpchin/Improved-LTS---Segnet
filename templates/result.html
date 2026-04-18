@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segmentation Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='uploadstyles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Segmentation Result</h2>
+        <!-- Display Flash Messages for Warnings -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <p class="{{ category }}">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% if stacked_image_url %}
+            <img src="{{ stacked_image_url }}" alt="Segmented Image">
+            <p>✅ Segmentation was successful!</p>
+            {% if request.args.get('duration') %}
+                <p class="timing">🕒 Model Processing Time: <strong>{{ request.args.get('duration') }} seconds</strong></p>
+            {% endif %}
+        {% else %}
+            <p>❌ No image found. Please try again.</p>
+        {% endif %}
+
+        <a href="{{ url_for('upload') }}" class="nav-button">Upload Another Image</a>
+        <a href="{{ url_for('home') }}" class="nav-button">Back to Home</a>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const stackedImageUrl = "{{ stacked_image_url | default('', true) }}";
+
+            if (stackedImageUrl) {
+                console.log("Segmented Image:", stackedImageUrl);
+                alert("✅ Segmentation was successful!");
+            } else {
+                console.log("No segmentation result available.");
+                alert("❌ No image found. Please try again.");
+            }
+        });
+    </script>
+</body>
+</html>
